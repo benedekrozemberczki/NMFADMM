@@ -2,7 +2,7 @@ Non-negative Matrix Factorization with Alternating Direction Method of Multiplie
 ============================================
 A sparsity aware implementation of "Alternating Direction Method of Multipliers for Non-Negative Matrix Factorization with the Beta-Divergence"  (ICASSP 2014).
 
-<div style="text-align:center"><img src ="sgcn.jpg" ,width=600/></div>
+<div style="text-align:center"><img src ="admm.jpg" ,width=600/></div>
 <p align="justify">
 Non-negative matrix factorization (NMF) is a popular method for learning interpretable features from non-negative data, such as counts or magnitudes. Different cost functions are used with NMF in different applications. We develop an algorithm, based on the alternating direction method of multipliers, that tackles NMF problems whose cost function is a beta-divergence, a broad class of divergence functions. We derive simple, closed-form updates for the most commonly used beta-divergences. We demonstrate experimentally that this algorithm has faster convergence and yields superior results to state-of-the-art algorithms for this problem.</p>
 
