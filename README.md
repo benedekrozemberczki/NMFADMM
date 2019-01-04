@@ -29,7 +29,7 @@ argparse           1.1.0
 
 The code takes an input matrix from a csv file. Every row indicates a (user, item, value) triplet. The first row is a header. Rows and columns should be indexed starting with 0. A sample matrix for the `Twitch Taiwan` dataset is included in the  `input/` directory. The structure of the matrix is the following:
 
-| **User ID ** | **Item ID** | **Positive Value** | 
+| **User ID** | **Item ID** | **Positive Value** | 
 | --- | --- | --- |
 | 0 | 3 |10 |
 | 1 | 1 |1 |
