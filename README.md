@@ -45,24 +45,17 @@ Learning of the embedding is handled by the `src/main.py` script which provides 
 #### Input and output options
 
 ```
-  --edge-path                STR    Input graph path.          Default is `input/bitcoin_otc.csv`.
-  --features-path            STR    Membership path.           Default is `input/bitcoin_otc.csv`.  
+  --input-path      STR    Input matrix path.       Default is `input/twitch_taiwan.csv`.
+  --user-path       STR    Item users path.         Default is `output/twitch_taiwan_user.csv`.
+  --item-path       STR    item factors path.       Default is `output/twitch_taiwan_item.csv`.
 ```
 
 #### Model options
 
 ```
-  --epochs                INT         Number of SGCN training epochs.      Default is 100. 
-  --reduction-iterations  INT         Number of SVD epochs.                Default is 128.
-  --reduction-dimensions  INT         SVD dimensions.                      Default is 30.
-  --seed                  INT         Random seed value.                   Default is 42.
-  --lamb                  FLOAT       Embedding regularization parameter.  Default is 1.0.
-  --test-size             FLOAT       Test ratio..                         Default is False.  
-  --learning-rate         FLOAT       Learning rate.                       Default is 0.001.  
-  --weight-decay          FLOAT       Weight decay.                        Default is 10^-5. 
-  --layers                LST         Layer sizes in model.                Default is [64, 32].
-  --spectral-features     BOOL        Layer sizes in autoencoder model.    Default is True
-  --general-features      BOOL        Loss calculation for the model.      Sets spectral features to False.  
+  --epochs        INT     Number of training epochs.      Default is 100. 
+  --dimensions    INT     Factor dimensions.              Default is 32.
+  --rho           FLOAT   Regularization parameter.       Default is 1.0.
 ```
 
 ### Examples
@@ -88,8 +81,4 @@ python src/main.py --layers 32
 Creating a model with some custom learning rate and epoch number.
 ```
 python src/main.py --learning-rate 0.001 --epochs 200
-```
-Training a model of another dataset with features present - a signed `Erdos-Renyi` graph. Saving the weight output and logs in a custom folder.
-```
-python src/main.py --general-features --edge-path input/erdos_renyi_edges.csv --features-path input/erdos_renyi_features.csv --embedding-path output/embedding/erdos_renyi.csv --regression-weights-path output/weights/erdos_renyi.csv --log-path logs/erdos_renyi.json
 ```
