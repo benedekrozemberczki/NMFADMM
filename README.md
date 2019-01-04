@@ -27,16 +27,16 @@ argparse           1.1.0
 ```
 ### Datasets
 
-The code takes an input graph in a csv file. Every row indicates an edge between two nodes separated by a comma. The first row is a header. Nodes should be indexed starting with 0. Sample graphs for the `Bitcoin Alpha`  and `Bitcoin OTC` graphs are included in the  `input/` directory. The structure of the edge dataset is the following:
+The code takes an input matrix from a csv file. Every row indicates a (user, item, value) triplet. The first row is a header. Rows and columns should be indexed starting with 0. A sample matrix for the `Twitch Taiwan` dataset is included in the  `input/` directory. The structure of the matrix is the following:
 
-| **NODE ID 1**| **NODE ID 2** | **Sign** | 
+| **User ID **| **Item ID** | **Positive Value** | 
 | --- | --- | --- |
-| 0 | 3 |-1 |
+| 0 | 3 |10 |
 | 1 | 1 |1 |
-| 2 | 2 |1 |
-| 3 | 1 |-1 |
+| 2 | 2 |12 |
+| 3 | 1 |17 |
 | ... | ... |... |
-| n | 9 |-1 |
+| n | m |8 |
 
 ### Options
 
@@ -60,14 +60,14 @@ Learning of the embedding is handled by the `src/main.py` script which provides 
 
 ### Examples
 
-The following commands learn a node embedding, regression weights and write the embedding to disk. The node representations are ordered by the ID. The layer sizes can be set manually.
+The following commands exexute a factorization and save the row and column factors to disk as csv files.
 
-Training an SGCN model on the default dataset. Saving the embedding, regression weights and logs at default paths.
+Training an ADMM NMF model on the default dataset. Saving the factors at default paths.
 ```
 python src/main.py
 ```
 <p align="center">
-<img style="float: center;" src="sgcn_run_example.jpg">
+<img style="float: center;" src="admm_run_example.jpg">
 </p>
 
 Creating an SGCN model of the default dataset with a 96-64-32 architecture.
