@@ -60,7 +60,7 @@ Learning of the embedding is handled by the `src/main.py` script which provides 
 
 ### Examples
 
-The following commands exexute a factorization and save the row and column factors to disk as csv files.
+The following commands execute a factorization and save the row and column factors to disk as csv files.
 
 Training an ADMM NMF model on the default dataset. Saving the factors at default paths.
 ```
@@ -70,15 +70,11 @@ python src/main.py
 <img style="float: center;" src="admm_run_example.jpg">
 </p>
 
-Creating an SGCN model of the default dataset with a 96-64-32 architecture.
+Creating a model with 128 features.
 ```
-python src/main.py --layers 96 64 32
+python src/main.py --dimensions 128
 ```
-Creating a single layer SGCN model with 32 features.
+Creating a model with some custom regularization and epoch number.
 ```
-python src/main.py --layers 32
-```
-Creating a model with some custom learning rate and epoch number.
-```
-python src/main.py --learning-rate 0.001 --epochs 200
+python src/main.py --rho 10.0 --epochs 100
 ```
