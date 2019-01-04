@@ -2,7 +2,6 @@ Non-negative Matrix Factorization with Alternating Direction Method of Multiplie
 ============================================
 A sparsity aware implementation of "Alternating Direction Method of Multipliers for Non-Negative Matrix Factorization with the Beta-Divergence"  (ICASSP 2014).
 
-
 <div style="text-align:center"><img src ="sgcn.jpg" ,width=600/></div>
 <p align="justify">
 Due to the fact much of today's data can be represented as graphs, there has been a demand for generalizing neural network models for graph data. One recent direction that has shown fruitful results, and therefore growing interest, is the usage of graph convolutional neural networks (GCNs). They have been shown to provide a significant improvement on a wide range of tasks in network analysis, one of which being node representation learning. The task of learning low-dimensional node representations has shown to increase performance on a plethora of other tasks from link prediction and node classification, to community detection and visualization. Simultaneously, signed networks (or graphs having both positive and negative links) have become ubiquitous with the growing popularity of social media. However, since previous GCN models have primarily focused on unsigned networks (or graphs consisting of only positive links), it is unclear how they could be applied to signed networks due to the challenges presented by negative links. The primary challenges are based on negative links having not only a different semantic meaning as compared to positive links, but their principles are inherently different and they form complex relations with positive links. Therefore we propose a dedicated and principled effort that utilizes balance theory to correctly aggregate and propagate the information across layers of a signed GCN model. We perform empirical experiments comparing our proposed signed GCN against state-of-the-art baselines for learning node representations in signed networks. More specifically, our experiments are performed on four real-world datasets for the classical link sign prediction problem that is commonly used as the benchmark for signed network embeddings algorithms. </p>
@@ -19,17 +18,12 @@ This repository provides an implementation for SGCN as described in the paper:
 
 The codebase is implemented in Python 3.5.2. package versions used for development are just below.
 ```
-networkx           1.11
 tqdm               4.28.1
 numpy              1.15.4
 pandas             0.23.4
 texttable          1.5.0
 scipy              1.1.0
 argparse           1.1.0
-sklearn            0.20.0
-torch              0.4.1.post2
-torch-geometric    0.3.1
-torchvision        0.2.1
 ```
 ### Datasets
 
@@ -43,17 +37,6 @@ The code takes an input graph in a csv file. Every row indicates an edge between
 | 3 | 1 |-1 |
 | ... | ... |... |
 | n | 9 |-1 |
-
-An attributed dataset for an `Erdos-Renyi` graph is also included in the input folder. **The node feature dataset rows are sorted by ID increasing**. The structure of the features csv has to be the following:
-
-| **Feature 1** | **Feature 2** | **Feature 3** |...| **Feature d** |
-| --- | --- | --- | --- |--- |
-|  3 |0 |1.37 |... |1 |
-|  1 |1 |2.54 |... |-11 |
-| 2 |0 |1.08 |... |-12 |
-| 1 |1 |1.22 |... |-4 |
-| . ... |... |... |... |... |
-|  5 |0 |2.47 |... |21 |
 
 ### Options
 
@@ -113,4 +96,3 @@ Training a model of another dataset with features present - a signed `Erdos-Reny
 ```
 python src/main.py --general-features --edge-path input/erdos_renyi_edges.csv --features-path input/erdos_renyi_features.csv --embedding-path output/embedding/erdos_renyi.csv --regression-weights-path output/weights/erdos_renyi.csv --log-path logs/erdos_renyi.json
 ```
-
