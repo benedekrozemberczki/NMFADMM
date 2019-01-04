@@ -4,14 +4,14 @@ A sparsity aware implementation of "Alternating Direction Method of Multipliers 
 
 <div style="text-align:center"><img src ="sgcn.jpg" ,width=600/></div>
 <p align="justify">
-Due to the fact much of today's data can be represented as graphs, there has been a demand for generalizing neural network models for graph data. One recent direction that has shown fruitful results, and therefore growing interest, is the usage of graph convolutional neural networks (GCNs). They have been shown to provide a significant improvement on a wide range of tasks in network analysis, one of which being node representation learning. The task of learning low-dimensional node representations has shown to increase performance on a plethora of other tasks from link prediction and node classification, to community detection and visualization. Simultaneously, signed networks (or graphs having both positive and negative links) have become ubiquitous with the growing popularity of social media. However, since previous GCN models have primarily focused on unsigned networks (or graphs consisting of only positive links), it is unclear how they could be applied to signed networks due to the challenges presented by negative links. The primary challenges are based on negative links having not only a different semantic meaning as compared to positive links, but their principles are inherently different and they form complex relations with positive links. Therefore we propose a dedicated and principled effort that utilizes balance theory to correctly aggregate and propagate the information across layers of a signed GCN model. We perform empirical experiments comparing our proposed signed GCN against state-of-the-art baselines for learning node representations in signed networks. More specifically, our experiments are performed on four real-world datasets for the classical link sign prediction problem that is commonly used as the benchmark for signed network embeddings algorithms. </p>
+Non-negative matrix factorization (NMF) is a popular method for learning interpretable features from non-negative data, such as counts or magnitudes. Different cost functions are used with NMF in different applications. We develop an algorithm, based on the alternating direction method of multipliers, that tackles NMF problems whose cost function is a beta-divergence, a broad class of divergence functions. We derive simple, closed-form updates for the most commonly used beta-divergences. We demonstrate experimentally that this algorithm has faster convergence and yields superior results to state-of-the-art algorithms for this problem.</p>
 
-This repository provides an implementation for SGCN as described in the paper:
+This repository provides an implementation for ADMM NMF as described in the paper:
 
-> Signed Graph Convolutional Network.
-> Tyler Derr, Yao Ma, and Jiliang Tang
-> ICDM, 2018.
-> [[Paper]](https://arxiv.org/abs/1808.06354)
+> Alternating Direction Method of Multipliers for Non-Negative Matrix Factorization with the Beta-Divergence.
+> Dennis L. Sun and Cédric Févotte 
+> ICASSP 2014
+> [[Paper]](http://statweb.stanford.edu/~dlsun/papers/nmf_admm.pdf)
 
 
 ### Requirements
