@@ -2,12 +2,12 @@ import argparse
 
 def parameter_parser():
     """
-    A method to parse up command line parameters. By default it gives an embedding of the Bitcoin OTC dataset.
+    A method to parse up command line parameters. By default it gives an embedding of the Twitch/Taiwan dataset.
     The default hyperparameters give a good quality representation without grid search.
-    Representations are sorted by node ID.
+    Representations are sorted by user/item ID.
     """
 
-    parser = argparse.ArgumentParser(description = "Run SGCN.")
+    parser = argparse.ArgumentParser(description = "Run ADMM-NMF.")
 
     parser.add_argument("--input-path",
                         nargs = "?",
@@ -26,12 +26,12 @@ def parameter_parser():
 
     parser.add_argument("--epochs",
                         type = int,
-                        default = 10,
-	                help = "Number of training epochs. Default is 10.")
+                        default = 100,
+	                help = "Number of training epochs. Default is 100.")
 
     parser.add_argument("--dimensions",
                         type = int,
-                        default = 4,
+                        default = 32,
 	                help = "Number of dimensions. Default is 32.")
 
     parser.add_argument("--rho",
