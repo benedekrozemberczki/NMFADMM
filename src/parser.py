@@ -16,12 +16,12 @@ def parameter_parser():
 
     parser.add_argument("--user-path",
                         nargs = "?",
-                        default = "./output/twit_taiwan_user.csv",
+                        default = "./output/twitch_taiwan_user.csv",
 	                help = "User factors csv.")
 
     parser.add_argument("--item-path",
                         nargs = "?",
-                        default = "./output/twit_taiwan_item.csv",
+                        default = "./output/twitch_taiwan_item.csv",
 	                help = "Item factors csv.")
 
     parser.add_argument("--epochs",
