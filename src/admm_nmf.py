@@ -110,7 +110,3 @@ class ADMM_NMF:
         item_factor = np.concatenate([ids,self.H_plus.T],axis=1)
         item_factor = pd.DataFrame(item_factor, columns = columns)
         item_factor.to_csv(self.args.item_path, index = None)
-
-        
-
-        
