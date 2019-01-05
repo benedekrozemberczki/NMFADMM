@@ -19,7 +19,9 @@ class ADMM_NMF:
         self._init_weights()
 
     def _init_weights(self):
-
+        """
+        Initializing model weights.
+        """
         self.W = np.random.uniform(-0.1, 0.1, (self.V.shape[0],self.args.dimensions)) 
         self.H = np.random.uniform(-0.1, 0.1, (self.args.dimensions,self.V.shape[1]))
         X_i, Y_i = sp.nonzero(self.V)
@@ -35,18 +37,27 @@ class ADMM_NMF:
         
     
     def update_W(self):
+        """
+        Updating user matrix.
+        """
         left = np.linalg.pinv( self.H.dot(self.H.T)+np.eye(self.args.dimensions))
         right_1 = self.X.dot(self.H.T).T+self.W_plus.T
         right_2 = (1.0/self.args.rho)*(self.alpha_X.dot(self.H.T).T-self.alpha_W.T)
         self.W = left.dot(right_1+right_2).T
 
     def update_H(self):
+        """
+        Updating item matrix.
+        """
         left = np.linalg.pinv(self.W.T.dot(self.W)+np.eye(self.args.dimensions))
         right_1 = self.X.T.dot(self.W).T+self.H_plus
         right_2 = (1.0/self.args.rho)*(self.alpha_X.T.dot(self.W).T-self.alpha_H)
         self.H = left.dot(right_1+right_2)
 
     def update_X(self):
+        """
+        Updating user-item matrix.
+        """
         iX, iY = sp.nonzero(self.V)
         values = np.sum(self.W[iX]*self.H[:, iY].T, axis=-1)
         scores = sp.sparse.coo_matrix((values-1, (iX,iY)),shape = self.V.shape)
