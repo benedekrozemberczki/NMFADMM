@@ -84,7 +84,9 @@ class ADMM_NMF:
         self.alpha_H = self.alpha_H+self.args.rho*(self.H-self.H_plus)
 
     def optimize(self):
-        
+        """
+        Running ADMM steps.
+        """
         for i in tqdm(range(self.args.epochs)):
             self.update_W()
             self.update_H()
