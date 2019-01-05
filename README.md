@@ -4,6 +4,7 @@ A sparsity aware implementation of "Alternating Direction Method of Multipliers 
 
 <div style="text-align:center"><img src ="admm.jpg" ,width=600/></div>
 <p align="justify">
+  
 Non-negative matrix factorization (NMF) is a popular method for learning interpretable features from non-negative data, such as counts or magnitudes. Different cost functions are used with NMF in different applications. We develop an algorithm, based on the alternating direction method of multipliers, that tackles NMF problems whose cost function is a beta-divergence, a broad class of divergence functions. We derive simple, closed-form updates for the most commonly used beta-divergences. We demonstrate experimentally that this algorithm has faster convergence and yields superior results to state-of-the-art algorithms for this problem.</p>
 
 This repository provides a sparsity aware implementation for ADMM based NMF as described in the paper:
@@ -27,7 +28,7 @@ argparse           1.1.0
 ```
 ### Datasets
 
-The code takes an input matrix from a csv file. Every row indicates a (user, item, value) triplet. The first row is a header. Rows and columns should be indexed starting with 0. A sample matrix for the `Twitch Taiwan` dataset is included in the  `input/` directory. The structure of the matrix is the following:
+The code takes an input matrix from a csv file. Every row indicates a (user, item, value) triplet. Values are separated by commas and the first row is a header. Rows and columns should be indexed starting with 0. A sample matrix for the `Twitch Taiwan` dataset is included in the  `input/` directory. The structure of the matrix is the following:
 
 | **User ID** | **Item ID** | **Positive Value** | 
 | --- | --- | --- |
@@ -40,7 +41,7 @@ The code takes an input matrix from a csv file. Every row indicates a (user, ite
 
 ### Options
 
-Learning of the embedding is handled by the `src/main.py` script which provides the following command line arguments.
+The learning of the embedding is handled by the `src/main.py` script which provides the following command line arguments.
 
 #### Input and output options
 
