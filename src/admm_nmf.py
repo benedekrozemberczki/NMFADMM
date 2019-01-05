@@ -98,6 +98,9 @@ class ADMM_NMF:
             self.update_alpha_H()
 
     def save_user_factors(self):
+        """
+        Save user factors.
+        """
         columns = ["id"] + ["x_" + str(x) for x in range(self.args.dimensions)]
         ids = np.array(range(self.V.shape[0])).reshape(-1,1)
         user_factor = np.concatenate([ids,self.W_plus],axis=1)
@@ -106,7 +109,7 @@ class ADMM_NMF:
               
     def save_item_factors(self):
         """
-        Save user factors.
+        Save item factors.
         """
         columns = ["id"] + ["x_" + str(x) for x in range(self.args.dimensions)]
         ids = np.array(range(self.V.shape[1])).reshape(-1,1)
