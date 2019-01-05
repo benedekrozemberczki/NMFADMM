@@ -105,6 +105,9 @@ class ADMM_NMF:
         user_factor.to_csv(self.args.user_path, index = None)
               
     def save_item_factors(self):
+        """
+        Save user factors.
+        """
         columns = ["id"] + ["x_" + str(x) for x in range(self.args.dimensions)]
         ids = np.array(range(self.V.shape[1])).reshape(-1,1)
         item_factor = np.concatenate([ids,self.H_plus.T],axis=1)
