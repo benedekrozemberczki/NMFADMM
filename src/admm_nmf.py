@@ -5,8 +5,15 @@ from tqdm import tqdm
 from numpy.linalg import inv
 
 class ADMM_NMF:
-
+    """
+    Alternating Direction Method of Multipliers for Non-Negative Matrix Factorization
+    """
     def __init__(self, V, args):
+        """
+        Class initialization.
+        :param args: Arguments object.
+        :param V: Data matrix.
+        """
         self.args = args
         self.V = V
         self._init_weights()
