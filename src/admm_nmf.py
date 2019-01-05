@@ -66,14 +66,20 @@ class ADMM_NMF:
         self.X = (left+right)/(2*self.args.rho)
 
     def update_W_plus(self):
+        """
+        Updating positive primal user factors.
+        """
         self.W_plus = np.maximum(self.W+(1/self.args.rho)*self.alpha_W,0)
 
     def update_H_plus(self):
+        """
+        Updating positive primal item factors.
+        """
         self.H_plus =  np.maximum(self.H+(1/self.args.rho)*self.alpha_H,0)
 
     def update_alpha_X(self):
         """
-        Updating target matrix duals.
+        Updating target matrix dual.
         """
         iX, iY = sp.nonzero(self.V)
         values = np.sum(self.W[iX]*self.H[:, iY].T, axis=-1)
