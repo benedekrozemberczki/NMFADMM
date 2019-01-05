@@ -72,15 +72,24 @@ class ADMM_NMF:
         self.H_plus =  np.maximum(self.H+(1/self.args.rho)*self.alpha_H,0)
 
     def update_alpha_X(self):
+        """
+        Updating target matrix duals.
+        """
         iX, iY = sp.nonzero(self.V)
         values = np.sum(self.W[iX]*self.H[:, iY].T, axis=-1)
         scores = sp.sparse.coo_matrix((values, (iX,iY)),shape = self.V.shape)
         self.alpha_X = self.alpha_X+self.args.rho*(self.X-scores)
 
     def update_alpha_W(self):
+        """
+        Updating user dual factors.
+        """
         self.alpha_W = self.alpha_W+self.args.rho*(self.W-self.W_plus)
  
     def update_alpha_H(self):
+        """
+        Updating item dual factors.
+        """
         self.alpha_H = self.alpha_H+self.args.rho*(self.H-self.H_plus)
 
     def optimize(self):
