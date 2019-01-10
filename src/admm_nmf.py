@@ -6,7 +6,8 @@ from numpy.linalg import inv
 
 class ADMM_NMF:
     """
-    Alternating Direction Method of Multipliers for Non-Negative Matrix Factorization
+    Alternating Direction Method of Multipliers for Non-Negative Matrix Factorization.
+    http://statweb.stanford.edu/~dlsun/papers/nmf_admm.pdf
     """
     def __init__(self, V, args):
         """
