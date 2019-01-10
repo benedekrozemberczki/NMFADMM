@@ -12,7 +12,7 @@ def tab_printer(args):
     args = vars(args)
     keys = sorted(args.keys())
     t = Texttable() 
-    t.add_rows([["Parameter", "Value"]] +  [[k.replace("_"," ").capitalize(),args[k]] for k in keys])
+    t.add_rows([["Parameter", "Value"]] +  [[k.replace("_"," ").capitalize(), args[k]] for k in keys])
     print(t.draw())
 
 def read_features(path):
@@ -25,7 +25,7 @@ def read_features(path):
     index_1 = features["index_1"].values.tolist()
     index_2 = features["index_2"].values.tolist()
     values = features["values"].values.tolist()
-    users = max(index_1)+1
-    items = max(index_2)+1
-    features = sparse.csr_matrix(sparse.coo_matrix((values,(index_1,index_2)),shape=(users,items),dtype=np.float32))
+    users = max(index_1) + 1
+    items = max(index_2) + 1
+    features = sparse.csr_matrix(sparse.coo_matrix((values, (index_1, index_2)), shape = (users,items), dtype = np.float32))
     return features
