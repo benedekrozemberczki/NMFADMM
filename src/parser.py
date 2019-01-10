@@ -37,6 +37,6 @@ def parameter_parser():
     parser.add_argument("--rho",
                         type = float,
                         default = 1.0,
-	                help = "Regularization parameter. Default is 1.0.")
+	                help = "Dual regularization parameter. Default is 1.0.")
 
     return parser.parse_args()
