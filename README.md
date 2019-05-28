@@ -1,4 +1,4 @@
-Non-negative Matrix Factorization with Alternating Direction Method of Multipliers
+Non-negative Matrix Factorization with Alternating Direction Method of Multipliers <img src="https://img.shields.io/badge/stars-5+-blue.svg"/>  <img src="https://img.shields.io/badge/license-MIT-blue.svg"/>
 ============================================
 A sparsity aware implementation of "Alternating Direction Method of Multipliers for Non-Negative Matrix Factorization with the Beta-Divergence"  (ICASSP 2014).
 
