@@ -14,6 +14,7 @@ This repository provides a sparsity aware implementation for ADMM based NMF as d
 > ICASSP 2014
 > [[Paper]](http://statweb.stanford.edu/~dlsun/papers/nmf_admm.pdf)
 
+An alternative implementation is available [[here]](https://github.com/oeufracio/NMF_ADMM_LR).
 
 ### Requirements
 
