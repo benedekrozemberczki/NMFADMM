@@ -28,10 +28,8 @@ class ADMM_NMF:
         X_i, Y_i = sp.nonzero(self.V)
         values = np.sum(self.W[X_i]*self.H[:, Y_i].T+np.random.uniform(0,1,(self.args.dimensions,)), axis=-1)
         self.X = sp.sparse.coo_matrix((values, (X_i,Y_i)),shape = self.V.shape)
-
         self.W_plus = np.random.uniform(0, 0.1, (self.V.shape[0],self.args.dimensions)) 
         self.H_plus = np.random.uniform(0, 0.1, (self.args.dimensions,self.V.shape[1]))
-
         self.alpha_X = sp.sparse.coo_matrix(([0]*len(values), (X_i,Y_i)), shape = self.V.shape)
         self.alpha_W = np.zeros(self.W.shape)
         self.alpha_H = np.zeros(self.H.shape)
