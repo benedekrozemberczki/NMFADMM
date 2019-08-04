@@ -1,6 +1,6 @@
+import numpy as np
 import scipy as sp
 import pandas as pd
-import numpy as np
 from tqdm import tqdm
 from numpy.linalg import inv
 
