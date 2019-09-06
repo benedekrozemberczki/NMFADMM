@@ -6,7 +6,6 @@ def parameter_parser():
     The default hyperparameters give a good quality representation without grid search.
     Representations are sorted by user/item ID.
     """
-
     parser = argparse.ArgumentParser(description = "Run ADMM-NMF.")
 
     parser.add_argument("--input-path",
