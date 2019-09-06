@@ -34,7 +34,6 @@ class ADMM_NMF:
         self.alpha_W = np.zeros(self.W.shape)
         self.alpha_H = np.zeros(self.H.shape)
         
-    
     def update_W(self):
         """
         Updating user matrix.
