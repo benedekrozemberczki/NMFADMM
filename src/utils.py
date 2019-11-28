@@ -1,4 +1,5 @@
-import json
+"""Data reading and printing tools."""
+
 import numpy as np
 import pandas as pd
 from scipy import sparse
@@ -11,8 +12,9 @@ def tab_printer(args):
     """
     args = vars(args)
     keys = sorted(args.keys())
-    t = Texttable() 
-    t.add_rows([["Parameter", "Value"]] +  [[k.replace("_"," ").capitalize(), args[k]] for k in keys])
+    t = Texttable()
+    t.add_rows([["Parameter", "Value"]])
+    t.add_rows([[k.replace("_", " ").capitalize(), args[k]] for k in keys])
     print(t.draw())
 
 def read_features(path):
@@ -27,5 +29,7 @@ def read_features(path):
     values = features["values"].values.tolist()
     users = max(index_1) + 1
     items = max(index_2) + 1
-    features = sparse.csr_matrix(sparse.coo_matrix((values, (index_1, index_2)), shape = (users,items), dtype = np.float32))
+    features = sparse.csr_matrix(sparse.coo_matrix((values, (index_1, index_2)),
+                                 shape=(users, items),
+                                 dtype=np.float32))
     return features

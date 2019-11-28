@@ -1,3 +1,5 @@
+"""NMF fitting by ADMM."""
+
 import numpy as np
 import scipy as sp
 import pandas as pd
@@ -23,22 +25,23 @@ class ADMM_NMF:
         """
         Initializing model weights.
         """
-        self.W = np.random.uniform(-0.1, 0.1, (self.V.shape[0],self.args.dimensions)) 
-        self.H = np.random.uniform(-0.1, 0.1, (self.args.dimensions,self.V.shape[1]))
+        self.W = np.random.uniform(-0.1, 0.1, (self.V.shape[0], self.args.dimensions))
+        self.H = np.random.uniform(-0.1, 0.1, (self.args.dimensions, self.V.shape[1]))
         X_i, Y_i = sp.nonzero(self.V)
-        values = np.sum(self.W[X_i]*self.H[:, Y_i].T+np.random.uniform(0,1,(self.args.dimensions,)), axis=-1)
-        self.X = sp.sparse.coo_matrix((values, (X_i,Y_i)),shape = self.V.shape)
-        self.W_plus = np.random.uniform(0, 0.1, (self.V.shape[0],self.args.dimensions)) 
-        self.H_plus = np.random.uniform(0, 0.1, (self.args.dimensions,self.V.shape[1]))
-        self.alpha_X = sp.sparse.coo_matrix(([0]*len(values), (X_i,Y_i)), shape = self.V.shape)
+        scores = self.W[X_i]*self.H[:, Y_i].T+np.random.uniform(0, 1, (self.args.dimensions, ))
+        values = np.sum(scores, axis=-1)
+        self.X = sp.sparse.coo_matrix((values, (X_i, Y_i)), shape=self.V.shape)
+        self.W_plus = np.random.uniform(0, 0.1, (self.V.shape[0], self.args.dimensions))
+        self.H_plus = np.random.uniform(0, 0.1, (self.args.dimensions, self.V.shape[1]))
+        self.alpha_X = sp.sparse.coo_matrix(([0]*len(values), (X_i, Y_i)), shape=self.V.shape)
         self.alpha_W = np.zeros(self.W.shape)
         self.alpha_H = np.zeros(self.H.shape)
-        
+
     def update_W(self):
         """
         Updating user matrix.
         """
-        left = np.linalg.pinv( self.H.dot(self.H.T)+np.eye(self.args.dimensions))
+        left = np.linalg.pinv(self.H.dot(self.H.T)+np.eye(self.args.dimensions))
         right_1 = self.X.dot(self.H.T).T+self.W_plus.T
         right_2 = (1.0/self.args.rho)*(self.alpha_X.dot(self.H.T).T-self.alpha_W.T)
         self.W = left.dot(right_1+right_2).T
@@ -58,7 +61,7 @@ class ADMM_NMF:
         """
         iX, iY = sp.nonzero(self.V)
         values = np.sum(self.W[iX]*self.H[:, iY].T, axis=-1)
-        scores = sp.sparse.coo_matrix((values-1, (iX,iY)),shape = self.V.shape)
+        scores = sp.sparse.coo_matrix((values-1, (iX, iY)), shape=self.V.shape)
         left = self.args.rho*scores-self.alpha_X
         right = (left.power(2)+4.0*self.args.rho*self.V).power(0.5)
         self.X = (left+right)/(2*self.args.rho)
@@ -67,13 +70,13 @@ class ADMM_NMF:
         """
         Updating positive primal user factors.
         """
-        self.W_plus = np.maximum(self.W+(1/self.args.rho)*self.alpha_W,0)
+        self.W_plus = np.maximum(self.W+(1/self.args.rho)*self.alpha_W, 0)
 
     def update_H_plus(self):
         """
         Updating positive primal item factors.
         """
-        self.H_plus =  np.maximum(self.H+(1/self.args.rho)*self.alpha_H,0)
+        self.H_plus = np.maximum(self.H+(1/self.args.rho)*self.alpha_H, 0)
 
     def update_alpha_X(self):
         """
@@ -81,7 +84,7 @@ class ADMM_NMF:
         """
         iX, iY = sp.nonzero(self.V)
         values = np.sum(self.W[iX]*self.H[:, iY].T, axis=-1)
-        scores = sp.sparse.coo_matrix((values, (iX,iY)),shape = self.V.shape)
+        scores = sp.sparse.coo_matrix((values, (iX, iY)), shape=self.V.shape)
         self.alpha_X = self.alpha_X+self.args.rho*(self.X-scores)
 
     def update_alpha_W(self):
@@ -89,7 +92,7 @@ class ADMM_NMF:
         Updating user dual factors.
         """
         self.alpha_W = self.alpha_W+self.args.rho*(self.W-self.W_plus)
- 
+
     def update_alpha_H(self):
         """
         Updating item dual factors.
@@ -115,17 +118,17 @@ class ADMM_NMF:
         Save user factors.
         """
         columns = ["id"] + ["x_" + str(x) for x in range(self.args.dimensions)]
-        ids = np.array(range(self.V.shape[0])).reshape(-1,1)
-        user_factor = np.concatenate([ids, self.W_plus], axis = 1)
-        user_factor = pd.DataFrame(user_factor, columns = columns)
-        user_factor.to_csv(self.args.user_path, index = None)
-              
+        ids = np.array(range(self.V.shape[0])).reshape(-1, 1)
+        user_factor = np.concatenate([ids, self.W_plus], axis=1)
+        user_factor = pd.DataFrame(user_factor, columns=columns)
+        user_factor.to_csv(self.args.user_path, index=None)
+
     def save_item_factors(self):
         """
         Save item factors.
         """
         columns = ["id"] + ["x_" + str(x) for x in range(self.args.dimensions)]
-        ids = np.array(range(self.V.shape[1])).reshape(-1,1)
-        item_factor = np.concatenate([ids, self.H_plus.T], axis = 1)
-        item_factor = pd.DataFrame(item_factor, columns = columns)
-        item_factor.to_csv(self.args.item_path, index = None)
+        ids = np.array(range(self.V.shape[1])).reshape(-1, 1)
+        item_factor = np.concatenate([ids, self.H_plus.T], axis=1)
+        item_factor = pd.DataFrame(item_factor, columns=columns)
+        item_factor.to_csv(self.args.item_path, index=None)

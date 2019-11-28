@@ -1,5 +1,7 @@
+""" Running the NMF-ADMM."""
+
 from admm_nmf import ADMM_NMF
-from parser import parameter_parser
+from param_parser import parameter_parser
 from utils import read_features, tab_printer
 
 def execute_factorization():
