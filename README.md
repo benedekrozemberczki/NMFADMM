@@ -27,8 +27,8 @@ scipy              1.1.0
 argparse           1.1.0
 ```
 ### Datasets
-
-The code takes an input matrix from a csv file. Every row indicates a (user, item, value) triplet. Values are separated by commas and the first row is a header. Rows and columns should be indexed starting with 0. A sample matrix for the `Twitch Taiwan` dataset is included in the  `input/` directory. The structure of the matrix is the following:
+<p align="justify">
+The code takes an input matrix from a csv file. Every row indicates a (user, item, value) triplet. Values are separated by commas and the first row is a header. Rows and columns should be indexed starting with 0. A sample matrix for the `Twitch Taiwan` dataset is included in the  `input/` directory. The structure of the matrix is the following:</p>
 
 | **User ID** | **Item ID** | **Positive Value** | 
 | --- | --- | --- |
