@@ -1,4 +1,4 @@
-Non-negative Matrix Factorization with Alternating Direction Method of Multipliers  ![License](https://img.shields.io/github/license/benedekrozemberczki/NMFADMM.svg?color=blue&style=plastic)
+Non-negative Matrix Factorization with Alternating Direction Method of Multipliers  ![License](https://img.shields.io/github/license/benedekrozemberczki/NMFADMM.svg?color=blue&style=plastic) ![Astro](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fastronomer.ullaakut.eu%2Fshields%3Fowner%3Dbenedekrozemberczki%26name%3DNMFADMM)
 ============================================
 A sparsity aware implementation of "Alternating Direction Method of Multipliers for Non-Negative Matrix Factorization with the Beta-Divergence"  (ICASSP 2014).
 
