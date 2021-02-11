@@ -1,6 +1,6 @@
 Non-negative Matrix Factorization with Alternating Direction Method of Multipliers
 ====================================================================================
-![License](https://img.shields.io/github/license/benedekrozemberczki/NMFADMM.svg?color=blue) [![codebeat badge](https://codebeat.co/badges/de270c66-5fd0-4df0-b037-de5a00d49279)](https://codebeat.co/projects/github-com-benedekrozemberczki-nmfadmm-master) [![repo size](https://img.shields.io/github/repo-size/benedekrozemberczki/NMFADMM.svg)](https://github.com/benedekrozemberczki/NMFADMM/archive/master.zip)⠀
+![License](https://img.shields.io/github/license/benedekrozemberczki/NMFADMM.svg?color=blue) [![codebeat badge](https://codebeat.co/badges/de270c66-5fd0-4df0-b037-de5a00d49279)](https://codebeat.co/projects/github-com-benedekrozemberczki-nmfadmm-master) [![repo size](https://img.shields.io/github/repo-size/benedekrozemberczki/NMFADMM.svg)](https://github.com/benedekrozemberczki/NMFADMM/archive/master.zip)⠀[![benedekrozemberczki](https://img.shields.io/twitter/follow/benrozemberczki?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=benrozemberczki)⠀
 
 
 A sparsity aware implementation of **Alternating Direction Method of Multipliers for Non-Negative Matrix Factorization with the Beta-Divergence**  (ICASSP 2014).
