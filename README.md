@@ -11,7 +11,7 @@ Non-negative matrix factorization (NMF) is a popular method for learning interpr
 
 The model is now also available in the package [Karate Club](https://github.com/benedekrozemberczki/karateclub).
 
-This repository provides a sparsity aware implementation for ADMM based NMF as described in the paper:
+This repository provides a sparsity aware implementation for **ADMM based NMF** as described in the paper:
 
 > Alternating Direction Method of Multipliers for Non-Negative Matrix Factorization with the Beta-Divergence.
 > Dennis L. Sun and Cédric Févotte 
