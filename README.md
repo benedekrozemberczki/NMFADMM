@@ -91,3 +91,5 @@ python src/main.py --rho 10.0 --epochs 100
 **License**
 
 - [GNU](https://github.com/benedekrozemberczki/NMFADMM/blob/master/LICENSE)
+
+--------------------------------------------------------------------------------
